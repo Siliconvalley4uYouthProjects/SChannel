@@ -1,0 +1,120 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <div id="container">
+        <h1>Channel Management System</h1>
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#createUserModal">Create User</a>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#deleteUserModal">Delete User</a>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="#" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#listUserModal">Show List of Users</a>
+          </div>
+        </div>
+  </div>
+      
+      <!-- Create User modal -->
+      <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Create User</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class = "createUserInfo" method="POST" action="">
+                {{ createuser_form.hidden_tag() }}
+              <div class = "form-group">
+                {{ createuser_form.first_name.label(class="form-control-label") }}
+                {{ createuser_form.first_name(class="form-control form-control-lg") }}
+              </div>
+              <div class = "form-group">
+                {{ createuser_form.last_name.label(class="form-control-label") }}
+                {{ createuser_form.last_name(class="form-control form-control-lg") }}
+              </div>
+              <div class = "form-group">
+                {{ createuser_form.email.label(class="form-control-label") }}
+                {{ createuser_form.email(class="form-control form-control-lg") }}
+              </div>
+              <div class = "form-group">
+                {{ createuser_form.phone_number.label(class="form-control-label") }}
+                {{ createuser_form.phone_number(class="form-control form-control-lg") }}
+              </div>
+              <div class = "form-group">
+                {{ createuser_form.channel_group.label(class="form-control-label") }}
+                {{ createuser_form.channel_group(class="form-control form-control-lg") }}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{createuser_form.submit(class="btn btn-primary")}}
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- Delete User modal -->
+    <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Remove User</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class = "deleteUserInfo" method="POST" action="">
+                {{ deleteuser_form.hidden_tag() }}
+                <div class = "form-group">
+                  {{ deleteuser_form.first_name.label(class="form-control-label") }}
+                  {{ deleteuser_form.first_name(class="form-control form-control-lg") }}
+                </div>
+                <div class = "form-group">
+                  {{ deleteuser_form.last_name.label(class="form-control-label") }}
+                  {{ deleteuser_form.last_name(class="form-control form-control-lg") }}
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{deleteuser_form.submit(class="btn btn-primary")}}
+            </div>
+              </form>
+          </div>
+        </div>
+     </div>
+      
+    <!-- Show User List modal -->
+    <div class="modal fade" id="listUserModal" tabindex="-1" role="dialog" aria-labelledby="listUserModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Show List of Users</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class = "listUserInfo" method="GET" action="">
+                <a>List of users goes here</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+              </form>
+          </div>
+        </div>
+    </div>
+{% endblock %}

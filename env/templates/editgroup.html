@@ -1,0 +1,158 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <div id="container">
+        <h1>Channel Management System</h1>
+        <h3>{{ groups.name }}</h3>
+
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="#" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#editGroupModal">Edit Group</a>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#addUserModal">Add User</a>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#removeUserModal">Remove User</a>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col text-center">
+            <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#sendMessageModal">Send Message</a>
+          </div>
+        </div>
+  </div>
+
+          <!-- Edit Group modal -->
+    <div class="modal fade" id="editGroupModal" tabindex="-1" role="dialog" aria-labelledby="editGroupModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Group Information</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form class= "editGroup" method="POST" action="">
+                {{ editgroup_form.hidden_tag() }}
+                <div class = "form-group">
+                    {{ editgroup_form.group_name.label(class="form-control-label") }}
+                    {{ editgroup_form.group_name(class="form-control form-control-lg") }}
+                </div>
+                <div class = "form-group">
+                    {{ editgroup_form.group_desc.label(class="form-control-label") }}
+                    {{ editgroup_form.group_desc(class="form-control form-control-lg") }}
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        {{editgroup_form.submit(class="btn btn-primary")}}
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+     
+
+      <!-- Add User modal -->
+      <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Add User</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class = "addUserInfo" method="POST" action="">
+                {{ adduser_form.hidden_tag() }}
+              <div class = "form-group">
+                {{ adduser_form.first_name.label(class="form-control-label") }}
+                {{ adduser_form.first_name(class="form-control form-control-lg") }}
+              </div>
+              <div class = "form-group">
+                {{ adduser_form.last_name.label(class="form-control-label") }}
+                {{ adduser_form.last_name(class="form-control form-control-lg") }}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{adduser_form.submit(class="btn btn-primary")}}
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>
+        
+    <!-- Remove User modal -->
+    <div class="modal fade" id="removeUserModal" tabindex="-1" role="dialog" aria-labelledby="removeUserModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Remove User</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class = "removeUserInfo" method="POST" action="">
+                {{ removeuser_form.hidden_tag() }}
+                <div class = "form-group">
+                  {{ removeuser_form.first_name.label(class="form-control-label") }}
+                  {{ removeuser_form.first_name(class="form-control form-control-lg") }}
+                </div>
+                <div class = "form-group">
+                  {{ removeuser_form.last_name.label(class="form-control-label") }}
+                  {{ removeuser_form.last_name(class="form-control form-control-lg") }}
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{removeuser_form.submit(class="btn btn-primary")}}
+            </div>
+              </form>
+          </div>
+        </div>
+     </div>
+
+      <!-- Send Message modal (NOT RENDERED ON PAGE)-->
+      <div class="modal fade" id="sendMessageModal" tabindex="-1" role="dialog" aria-labelledby="sendMessageModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Add User</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class = "sendMessage" method="POST" action="">
+                {{ sendmessage_form.hidden_tag() }}
+              <div class = "form-group">
+                {{ sendmessage_form.message_name.label(class="form-control-label") }}
+                {{ sendmessage_form.message_name(class="form-control form-control-lg") }}
+              </div>
+              <div class = "form-group">
+                {{ sendmessage_form.message_body.label(class="form-control-label") }}
+                {{ sendmessage_form.message_body(class="form-control form-control-lg") }}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{sendmessage_form.submit(class="btn btn-primary")}}
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>      
+
+{% endblock %}
